@@ -1,7 +1,6 @@
 function solution(nums) {
-  let answer = nums.length / 2;
-  let deduplicatedArr = new Set(nums);
-  let deCnt = [...deduplicatedArr].length;
+  const answer = nums.length / 2;
+  const deCnt = new Set(nums).size;
 
   return answer > deCnt ? deCnt : answer;
 }
