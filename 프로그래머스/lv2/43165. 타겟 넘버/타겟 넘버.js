@@ -1,19 +1,14 @@
 function solution(numbers, target) {
-    let answer = 0;
-    
-    // 초기값 실행
-    dfs(0, 0);
-    
-    function dfs(level, sum) {
-        // 마지막 경로에 도달
-        if (level === numbers.length) {
-            if (sum === target) answer++;
-            return;
-        }
-        
-        dfs(level + 1, sum + numbers[level]);
-        dfs(level + 1, sum - numbers[level]);
+    return dfs(numbers, target, 0, 0);
+}
+
+function dfs(numbers, target, index, sum) {
+    if (index === numbers.length) {
+        return sum === target ? 1 : 0;
     }
+
+    const add = dfs(numbers, target, index + 1, sum + numbers[index]);
+    const subtract = dfs(numbers, target, index + 1, sum - numbers[index]);
     
-    return answer;
+    return add + subtract;
 }
